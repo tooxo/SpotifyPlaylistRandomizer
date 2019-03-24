@@ -60,6 +60,9 @@ async function noTracklist(offset){
             for (track in msg.items){
               tracklist.push(msg.items[track]);
             }
+        },
+        error: function (request, status, error) {
+          setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
         }
     })
     current = current + 100;
@@ -90,6 +93,9 @@ async function backup(offset){
             for (track in msg.items){
               tracklist.push(msg.items[track]);
             }
+        },
+        error: function (request, status, error) {
+          setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
         }
     })
     current = current + 100;
@@ -116,6 +122,9 @@ async function backup(offset){
     data: '{"name": "' + backupname + '"}',
     success: function(msg) {
       backupid = msg.id;
+    },
+    error: function (request, status, error) {
+      setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
     }
     });
   let splitten = [];
@@ -135,6 +144,9 @@ async function backup(offset){
       },
       data: '{"uris": ["' + splitten.join('","') + '"]}',
       success: function(msg){
+      },
+      error: function (request, status, error) {
+        setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
       }
     });
     o = o + 100;
@@ -165,7 +177,9 @@ async function randomize(){
         request.setRequestHeader('Authorization', 'Bearer ' + auth_code);
       },
       data: '{"tracks": [' + splitten.join(",") + ']}',
-      success: function(msg){
+      success: function(msg){},
+      error: function (request, status, error) {
+        setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
       }
     });
     o = o + 100;
@@ -189,6 +203,9 @@ async function randomize(){
       },
       data: '{"uris": ["' + splitten.join('","') + '"]}',
       success: function(msg){
+      },
+      error: function (request, status, error) {
+        setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
       }
     });
     o = o + 100;
