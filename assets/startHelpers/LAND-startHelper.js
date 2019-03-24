@@ -12,9 +12,7 @@ function apiCallCheck(){
     let cookieToken = getCookie('access_token');
 
     if (!cookieToken && !access_token){
-        console.log('Redirect 2.');
         self.location = './index.html';
-
     }
 
     if (cookieToken && !access_token){
@@ -30,13 +28,13 @@ function apiCallCheck(){
 
 $( document ).ready(function () {
     let url_string = window.location.href;
+    url_string = url_string.replace("#", "?");
     let url = new URL(url_string);
     let access_token = url.searchParams.get('access_token');
     let bearer = url.searchParams.get('token_type');
     let cookieToken = getCookie('access_token');
 
     if (bearer){
-        console.log("Cookie Created");
         createCookie('access_token', access_token, 0.04097222222); //0.04097222222 = 59 Minutes;
         self.location = './land.html?access_token=' + access_token;
     }else {

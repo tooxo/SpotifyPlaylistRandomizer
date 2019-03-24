@@ -8,10 +8,7 @@ let playlist = user_task.playlist;
 let url = user_task.url;
 let total = user_task.total;
 let backupname = playlistname + "_backup";
-console.log(backupname);
 let backupid = "";
-console.log(user_task);
-console.log(playlistname);
 
 function setText(text){
   document.getElementById("infotext").innerHTML = text;
@@ -60,7 +57,6 @@ async function noTracklist(offset){
         },
         processData: false,
         success: function (msg) {
-            console.log(msg.items);
             for (track in msg.items){
               tracklist.push(msg.items[track]);
             }
@@ -91,7 +87,6 @@ async function backup(offset){
         },
         processData: false,
         success: function (msg) {
-            console.log(msg.items);
             for (track in msg.items){
               tracklist.push(msg.items[track]);
             }
@@ -162,7 +157,6 @@ async function randomize(){
     for (id in idlist.slice(o - 100, o)){
       splitten.push('{"uri": "' + idlist.slice(o-100, o)[id] + '"}');
     }
-    console.log('{"tracks": [' + splitten.join(",") + ']}');
     $.ajax({
       type: 'DELETE',
       url: 'https://api.spotify.com/v1/playlists/' + playlist + '/tracks',

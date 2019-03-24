@@ -20,8 +20,6 @@ let total = 0;
 let selected;
 let obj;
 
-console.log(auth_code);
-
     function requestName() {
         $.ajax({
             type: 'GET',
@@ -158,8 +156,6 @@ console.log(auth_code);
         obj.url = playlist[selected].external_urls.spotify;
         obj.total = playlist[selected].tracks.total;
         createCookie('jstophp', JSON.stringify(obj), 1);
-        alert(JSON.stringify(obj));
-        alert(btoa(JSON.stringify(obj)));
         createCookie('user_task', btoa(JSON.stringify(obj)), 0.04097222222);
         self.location = './sync.html?' + 'access_token=' + auth_code + '&user=' + user_id + '&playlist_id=' + playlist[selected].id;
     }
