@@ -4,7 +4,7 @@ const app = new Vue({
         return {
             client_id: '*',
             scopes: 'playlist-read-private playlist-modify-public',
-            redirect_uri: 'https://s.chulte.de/Spotify2Mp3/land.html',
+            redirect_uri: 'https://s.chulte.de/SpotifyPlaylistRandomizer/land.html',
             me: null
         }
     },
