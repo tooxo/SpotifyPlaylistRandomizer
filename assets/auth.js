@@ -2,7 +2,7 @@ const app = new Vue({
     el: '#app',
     data() {
         return {
-            client_id: 'c2fa136861e543df9f385991575a1534',
+            client_id: '32552cee6d48453c8cc07b6e89290e93',
             scopes: 'playlist-read-private playlist-modify-public',
             redirect_uri: 'https://s.chulte.de/Spotify2Mp3/land.html',
             me: null
