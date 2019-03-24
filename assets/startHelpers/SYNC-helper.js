@@ -62,7 +62,7 @@ async function noTracklist(offset){
             }
         },
         error: function (request, status, error) {
-          setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
+          error();
         }
     })
     current = current + 100;
@@ -95,7 +95,7 @@ async function backup(offset){
             }
         },
         error: function (request, status, error) {
-          setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
+          error();
         }
     })
     current = current + 100;
@@ -124,7 +124,7 @@ async function backup(offset){
       backupid = msg.id;
     },
     error: function (request, status, error) {
-      setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
+      error();
     }
     });
   let splitten = [];
@@ -146,7 +146,7 @@ async function backup(offset){
       success: function(msg){
       },
       error: function (request, status, error) {
-        setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
+        error();
       }
     });
     o = o + 100;
@@ -179,7 +179,7 @@ async function randomize(){
       data: '{"tracks": [' + splitten.join(",") + ']}',
       success: function(msg){},
       error: function (request, status, error) {
-        setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
+        error();
       }
     });
     o = o + 100;
@@ -205,7 +205,7 @@ async function randomize(){
       success: function(msg){
       },
       error: function (request, status, error) {
-        setText("Error. Possible Error causes: This was not your playlist, the playlist is playing right now.");
+        error();
       }
     });
     o = o + 100;
