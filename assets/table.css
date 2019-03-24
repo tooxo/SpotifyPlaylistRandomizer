@@ -107,7 +107,7 @@ div.bottombar{
 div.visiblebar {
     width: 50vw;
     height: 5vh;
-    background: green;
+    background: gray;
     display: block;
     z-index: 50;
     position: fixed;
@@ -124,7 +124,7 @@ th {
 }
 
 .select:hover{
-    color: green;
+    color: gray;
 }
 
 .selectcell{
