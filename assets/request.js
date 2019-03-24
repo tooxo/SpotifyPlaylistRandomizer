@@ -82,25 +82,6 @@ let obj;
         let bar = document.getElementById('bottombar');
         bar.setAttribute('class', 'visiblebar');
         selected = id;
-        if (bar){
-            gatherTrackList();
-        }
-    }
-
-    function gatherTrackList(){
-        $.ajax({
-            type: 'GET',
-            url: 'https://api.spotify.com/v1/playlists/' + selected.id + '/tracks',
-            beforeSend: function (request) {
-                request.setRequestHeader('Accept', 'application/json');
-                request.setRequestHeader('Content-Type', 'application/json');
-                request.setRequestHeader('Authorization', 'Bearer ' +  auth_code);
-            },
-            processData: false,
-            success: function (msg) {
-                tracklist = msg.tracks
-            }
-        })
     }
 
     function sortAndDisplay(){
