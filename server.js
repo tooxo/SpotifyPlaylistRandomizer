@@ -249,7 +249,7 @@ app.get('/api/callback', (req, res) => {
     let token = req.query.access_token;
     let auth = req.cookies.auth;
     addAccessTokenToMongo(auth, token);
-    res.redirect('select')
+    res.redirect('../../select')
 });
 
 function randomizeTask(playlist_id, pos, new_pos, auth_token) {
