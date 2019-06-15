@@ -59,7 +59,7 @@
             pro.animate(0.0);
             $.ajax({
                 method: "GET",
-                url: "/api/random/?spotify=" + spotify_id + "&total=" + total,
+                url: "../api/random/?spotify=" + spotify_id + "&total=" + total,
                 error: function (err) {
                     console.log(err);
                 },
@@ -70,7 +70,7 @@
                         setTimeout(function () {
                             $.ajax({
                                 method: "GET",
-                                url: "/api/taskinfo/?task=" + taskId,
+                                url: "../api/taskinfo/?task=" + taskId,
                                 error: function (err) {
                                     alert(err);
                                 },
