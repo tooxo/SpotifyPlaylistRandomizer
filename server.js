@@ -131,7 +131,8 @@ app.get('/randomize', (req, res) => {
                 res.send(dom.serialize());
             });
         }).catch(error => {
-            console.log(error);
+            res.status(400);
+            res.send("Bad Request.");
         });
     });
 });
@@ -185,7 +186,6 @@ function modifyTaskToMongo(task_id, items_done, error) {
 }
 
 function addAccessTokenToMongo(auth, access_token) {
-    console.log(access_token);
     collection.findOneAndUpdate({
         'auth': auth
     }, {
@@ -223,7 +223,6 @@ app.get("/api/taskinfo", (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    console.log(req.cookies);
     if (!req.cookies['auth']) {
         let datefarinthefuture = new Date(new Date().getTime() + (1000 * 60 * 60 * 24 * 365 * 100));
         let options = {
@@ -304,7 +303,7 @@ app.get('/api/random', (req, res) => {
         let q = queue();
         q.concurrency = 1;
         q.on('error', function (error) {
-            console.log(error);
+            console.log("yikes, ", error);
         });
         let taskid = makeid(255);
         addTaskToMongo(taskid, total_songs);
