@@ -1,0 +1,21 @@
+version: '2'
+services:
+    web:
+        build: .
+        command: bash -c "npm run start"
+        volumes:
+            - .:/usr/src/app/
+            - /usr/src/app/node_modules
+        ports:
+            - "8003:8080"
+        env_file:
+            - "variables.env"
+        depends_on:
+            - "mongo"
+    mongo:
+        image: mongo:latest
+#        name: "mongo"
+        volumes:
+            - ./mongodb:/data/db
+        ports:
+            - "27017:27017"

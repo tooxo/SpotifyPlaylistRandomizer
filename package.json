@@ -1,0 +1,18 @@
+{
+	"name": "spotify_playlist_randomizer",
+	"version": "0.1.0",
+	"description": "",
+	"author": "Till Schulte",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"axios": "^0.19.0",
+		"cookie-parser": "^1.4.4",
+		"express": "^4.16.1",
+		"jsdom": "^15.1.1",
+		"mongodb": "^3.2.7",
+		"queue": "^6.0.1"
+	}
+}

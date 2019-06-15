@@ -88,10 +88,6 @@ let obj;
         document.getElementById("crawlbutton").setAttribute('style', 'display: none !important');
         const body = document.getElementById('div');
         body.setAttribute('style', "height: auto;");
-        const table = document.createElement('table');
-        let zeile = document.createElement('tr');
-        let header = document.createElement('th');
-        let content = document.createElement('td');
 
         if (document.getElementById('table')){
             document.getElementById('table').remove();
@@ -103,7 +99,6 @@ let obj;
         zeile.appendChild(header).appendChild(document.createTextNode(" "));
         table.setAttribute('id', 'table');
         body.appendChild(table);
-
 
         for (let i = 0; i < playlist.length; i++){
             let zeile = document.createElement('tr');
