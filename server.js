@@ -106,7 +106,13 @@ app.get('/select', (req, res) => {
 });
 
 app.get('/randomize', (req, res) => {
-    let auth = req.cookies.auth;
+    let auth;
+    try {
+        auth = req.cookies.auth;
+    } catch (e) {
+        res.status(400);
+        res.redirect("..");
+    }
     collection.findOne({
         'auth': auth
     }, function (err, document) {
@@ -247,7 +253,7 @@ app.get('/table.css', (req, res) => {
 app.get('/api/callback', (req, res) => {
     let token = req.query.access_token;
     let auth = req.cookies.auth;
-    if (!token){
+    if (!token) {
         res.sendFile(path.join(__dirname + '/static/callback.html'));
     } else {
         addAccessTokenToMongo(auth, token);
