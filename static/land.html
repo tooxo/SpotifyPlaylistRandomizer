@@ -28,7 +28,7 @@
 
             if (lines[i].getAttribute("method")) {
                 if (lines[i].getAttribute("method") === "confirm") {
-                    self.location = '/spotify/randomize/?spotify=' + spotify_link + '"';
+                    self.location = '/spotify/randomize/?spotify="' + spotify_link;
                 }
             }
             if (lines[i].getAttribute("method") === "select" || !lines[i].getAttribute("method")) {
