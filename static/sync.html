@@ -87,7 +87,9 @@
                                     if (msg === "Done") {
                                         document.getElementById("done").innerText = "Done!";
                                         pro.animate(1.0);
-                                        alert("Im Done! Thank you for using my service.");
+                                        setTimeout(function () {
+                                            alert("Im Done! Thank you for using my service.");
+                                        }, 0.1);
                                     } else {
                                         document.getElementById("done").innerText = msg + "/" + total;
                                         try {

@@ -4,36 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Select a Playlist</title>
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans:100,300,400,500,700,900,100i,300i,400i,500i,700i,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans:100,300,400,500,700,900,100i,300i,400i,500i,700i,900i"
+          rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="table.css">
 </head>
 
 <body>
-    <div class="div" id="tablediv" style="display: none;">
+<div class="div" id="tablediv" style="display: none;">
 
-    </div>
-    <div id="bottombar" class="bottombar">
-        <button id="x" class="x">X</button>
-        <center>
-            <a id="selection2" href="javascript:void(0);" class="selection">Confirm</a>
-        </center>
-    </div>
-    <footer>
-        <script>
-            function select(i, spotify_link) {
-                let lines = document.getElementsByTagName('tr');
-                lines = Array.from(lines);
-                console.log(lines);
-                for (let j=1; j<lines.length; j++){
-                    console.log(j);
-                    lines[j].setAttribute("style", "");
+</div>
+<div id="bottombar" class="bottombar">
+    <button id="x" class="x">X</button>
+    <center>
+        <a id="selection2" href="javascript:void(0);" class="selection">Confirm</a>
+    </center>
+</div>
+<footer>
+    <script>
+        function select(i, spotify_link) {
+            let lines = document.getElementsByTagName('tr');
+            lines = Array.from(lines);
+
+
+            if (lines[i].getAttribute("method")) {
+                if (lines[i].getAttribute("method") === "confirm") {
+                    self.location = '/spotify/randomize/?spotify=' + spotify_link + '"';
                 }
-                document.getElementById("line"+i).setAttribute("style", "background: green;");
-                document.getElementById("bottombar").setAttribute("class", "visiblebar");
-                document.getElementById("selection2").setAttribute("onclick", 'self.location="/spotify/randomize/?spotify='+spotify_link+'"');
             }
-        </script>
-    </footer>
+            if (lines[i].getAttribute("method") === "select" || !lines[i].getAttribute("method")) {
+                for (let j = 1; j < lines.length; j++) {
+                    lines[j].setAttribute("style", "");
+                    lines[j].setAttribute("method", "select");
+                    lines[j].childNodes[1].childNodes[0].childNodes[0].textContent = "[Select]";
+                }
+                let selection = document.getElementById("select" + i.toString());
+                selection.innerText = "[Confirm]";
+                lines[i].setAttribute("method", "confirm");
+            }
+
+        }
+
+    </script>
+</footer>
 </body>
 
 </html>
