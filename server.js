@@ -47,6 +47,7 @@ app.get('/select', (req, res) => {
                     Accept: "application/json"
                 }
             }).then(response => {
+                let old_response = response;
                 axios.get('https://api.spotify.com/v1/users/' + response.data.id + '/playlists?limit=50', {
                     headers: {
                         Authorization: "Bearer " + access_token,
@@ -73,26 +74,28 @@ app.get('/select', (req, res) => {
 
 
                     for (let i = 0; i < playlist.length; i++) {
-                        let zeile = document.createElement('tr');
-                        let content = document.createElement('td');
-                        let a = document.createElement('a');
-                        table.appendChild(zeile);
-                        zeile.appendChild(content).appendChild(a).appendChild(document.createTextNode(playlist[i].name));
-                        content = document.createElement('td');
-                        a.setAttribute('href', playlist[i].external_urls.spotify);
-                        a.setAttribute('target', '_blank');
-                        content = document.createElement('td');
-                        content.setAttribute('class', 'selectcell');
-                        let p = document.createElement("a");
-                        p.setAttribute('id', 'select' + i);
-                        zeile.appendChild(content).appendChild(p);
-                        zeile.setAttribute("id", "line" + i);
-                        p.setAttribute('class', 'select');
-                        p.appendChild(document.createTextNode('[Select]'));
-                        p.setAttribute('href', 'javascript:void(1);');
-                        p.setAttribute('onclick',
-                            'select(' + i + ', "' + playlist[i].id + '");'
-                        );
+                        if (old_response.data.id === playlist[i].owner.id || playlist[i].collaborative === true) {
+                            let zeile = document.createElement('tr');
+                            let content = document.createElement('td');
+                            let a = document.createElement('a');
+                            table.appendChild(zeile);
+                            zeile.appendChild(content).appendChild(a).appendChild(document.createTextNode(playlist[i].name));
+                            content = document.createElement('td');
+                            a.setAttribute('href', playlist[i].external_urls.spotify);
+                            a.setAttribute('target', '_blank');
+                            content = document.createElement('td');
+                            content.setAttribute('class', 'selectcell');
+                            let p = document.createElement("a");
+                            p.setAttribute('id', 'select' + i);
+                            zeile.appendChild(content).appendChild(p);
+                            zeile.setAttribute("id", "line" + i);
+                            p.setAttribute('class', 'select');
+                            p.appendChild(document.createTextNode('[Select]'));
+                            p.setAttribute('href', 'javascript:void(1);');
+                            p.setAttribute('onclick',
+                                'select(' + i + ', "' + playlist[i].id + '");'
+                            );
+                        }
                     }
 
                     res.send(dom.serialize());
