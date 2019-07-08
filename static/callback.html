@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title> </title>
 </head>
 <body>
 
 <script>
-    self.location = self.location.toString().split("#")[0] + "?" + self.location.hash.split("#")[1].split("&")[0]
+    try {
+        self.location = self.location.toString().split("#")[0] + "?" + self.location.hash.split("#")[1].split("&")[0]
+    } catch (e) {
+        window.history.back();
+    }
 </script>
 
 </body>

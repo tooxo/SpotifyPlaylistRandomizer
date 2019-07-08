@@ -2,7 +2,7 @@ version: '2'
 services:
     web:
         build: .
-        command: bash -c "npm run start"
+        command: sh -c "npm run start"
         volumes:
             - .:/usr/src/app/
             - /usr/src/app/node_modules
@@ -13,7 +13,7 @@ services:
         depends_on:
             - "mongo"
     mongo:
-        image: mongo:latest
+        image: mvertes/alpine-mongo:latest
 #        name: "mongo"
         volumes:
             - ./mongodb:/data/db
