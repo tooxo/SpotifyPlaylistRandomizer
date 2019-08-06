@@ -1,7 +1,7 @@
 {
 	"name": "spotify_playlist_randomizer",
-	"version": "0.1.0",
-	"description": "",
+	"version": "0.1.1",
+	"description": "Randomizes Playlists",
 	"author": "Till Schulte",
 	"main": "server.js",
 	"scripts": {

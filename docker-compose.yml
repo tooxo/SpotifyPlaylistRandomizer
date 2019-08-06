@@ -13,7 +13,7 @@ services:
         depends_on:
             - "mongo"
     mongo:
-        image: mvertes/alpine-mongo:latest
+        image: tooxo/alpine-mongo-silent:latest
 #        name: "mongo"
         volumes:
             - ./mongodb:/data/db
