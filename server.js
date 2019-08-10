@@ -21,7 +21,7 @@ mongo.connect(mongourl, (err, client) => {
     collection_tasks = db.collection('tasks')
 });
 
-const PORT = 8080;
+const PORT = 8081;
 const HOST = '0.0.0.0';
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 

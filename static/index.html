@@ -11,5 +11,8 @@
      <h1 id="text"></h1>
      <button id="loginbutton" class="loginbutton" onclick="self.location='api/auth'">Login to Spotify</button>
     </div>
+ <script>
+if (!window.location.href.endsWith("/")){self.location=window.location.href+"/"};
+</script>
  </body>
 </html>

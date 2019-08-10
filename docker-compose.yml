@@ -7,11 +7,20 @@ services:
             - .:/usr/src/app/
             - /usr/src/app/node_modules
         ports:
-            - "8003:8080"
+            - "8100:8081"
         env_file:
             - "variables.env"
         depends_on:
-            - "mongo"
+            - mongo
+        labels:
+            - traefik.frontend.rule=PathPrefixStrip:/spotify;Host:s.chulte.de
+#            - traefik.passHostHeader=true
+            - traefik.enable=true
+            - traefik.frontend.priority=25
+            - traefik.port=8081
+            - traefik.docker.network=web
+        networks:
+            - web
     mongo:
         image: tooxo/alpine-mongo-silent:latest
 #        name: "mongo"
@@ -19,3 +28,11 @@ services:
             - ./mongodb:/data/db
         ports:
             - "27017:27017"
+        labels:
+            - "traefik.enable=false"
+        networks:
+            - web
+
+networks:
+    web:
+        external: true
